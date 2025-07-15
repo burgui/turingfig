@@ -6,70 +6,74 @@
   <title>Turing Fig – Programmable Finance</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
   <style>
+    /* ===== Design Tokens ===== */
     :root {
       --clr-bg: #0e1628;
       --clr-surface: #192338;
       --clr-primary: #00a4ff;
       --clr-text: #ecf1ff;
-      --clr-muted: #93a1c4;
+      --clr-muted: #95a3c5;
       --radius: 1.2rem;
-      --transition: 0.3s ease;
+      --transition: 0.35s cubic-bezier(.25,.8,.3,1);
     }
+
+    /* ===== Base ===== */
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{font-family:Inter,system-ui,sans-serif;background:var(--clr-bg);color:var(--clr-text);line-height:1.6;overflow-x:hidden}
     h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff}
-    h1{font-size:clamp(2.4rem,6vw,3.8rem);line-height:1.1}
+    h1{font-size:clamp(2.3rem,6vw,3.8rem);line-height:1.1}
     h2{font-size:2rem;margin-bottom:.75rem;color:var(--clr-primary)}
     h3{font-size:1.25rem;margin-bottom:.4rem}
-    a{color:var(--clr-primary);text-decoration:none;position:relative}
-    a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--clr-primary);transform:scaleX(0);transform-origin:left;transition:transform var(--transition)}
+
+    a{color:var(--clr-primary);text-decoration:none;position:relative;font-weight:600}
+    a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;background:var(--clr-primary);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
     a:hover::after{transform:scaleX(1)}
+
     .container{width:88%;max-width:1200px;margin-inline:auto}
     section{padding:4.5rem 0}
 
-    /* ===== Nav ===== */
-    nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(14,22,40,0.85);backdrop-filter:blur(6px);transition:background .4s ease}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 6%}
-    .logo{display:flex;align-items:center;gap:.6rem;font-family:'Space Grotesk',sans-serif;font-size:1.3rem;color:#fff}
-    .logo img{height:36px;width:auto;filter:drop-shadow(0 0 6px rgba(0,164,255,.25))}
+    /* ===== Navbar ===== */
+    nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(14,22,40,.85);backdrop-filter:blur(8px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 6%}
+    .logo{display:flex;align-items:center;gap:.6rem;font-family:'Space Grotesk',sans-serif;font-size:1.25rem;color:#fff}
+    .logo img{height:34px;width:auto;filter:drop-shadow(0 0 6px rgba(0,164,255,.35))}
     .nav-links{display:flex;gap:2rem}
-    .nav-links a{font-weight:600;font-size:.95rem;letter-spacing:.3px}
 
-    /* offset for fixed nav */
-    .spacer{height:68px}
+    .spacer{height:74px}
 
     /* ===== Hero ===== */
-    .hero{position:relative;text-align:center;padding:8rem 0 6rem;background:radial-gradient(circle at 30% 30%,rgba(0,164,255,.18)0%,transparent 60%),var(--clr-bg)}
-    .hero p{max-width:640px;margin:1.25rem auto 0;font-size:1.2rem;color:var(--clr-muted)}
-    .btn{display:inline-block;background:var(--clr-primary);color:#fff;padding:1rem 2.2rem;border-radius:var(--radius);font-weight:600;margin-top:2rem;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease}
-    .btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 26px rgba(0,164,255,.4)}
-    .btn:active{transform:translateY(0) scale(0.97)}
+    .hero{position:relative;text-align:center;padding:8rem 0 6rem;background:radial-gradient(circle at 25% 30%,rgba(0,164,255,.16)0%,transparent 60%),var(--clr-bg)}
+    .hero p{max-width:640px;margin:1.25rem auto 0;font-size:1.15rem;color:var(--clr-muted)}
+    .btn{display:inline-block;background:var(--clr-primary);color:#fff;padding:1rem 2.3rem;border-radius:var(--radius);margin-top:2rem;transition:transform .25s,box-shadow .25s;will-change:transform}
+    .btn:hover{transform:translateY(-6px) scale(1.04);box-shadow:0 18px 34px rgba(0,164,255,.45)}
+    .btn:active{transform:translateY(0) scale(.97)}
 
-    /* ===== Build section ===== */
-    .features{display:grid;gap:2.5rem}
+    /* ===== Build ===== */
+    .features{display:grid;gap:2.5rem;margin-top:2rem}
     @media(min-width:768px){.features{grid-template-columns:repeat(3,1fr)}}
-    .card{background:var(--clr-surface);border-radius:var(--radius);padding:2rem;transition:transform .35s ease,box-shadow .35s ease}
-    .card:hover{transform:translateY(-7px) rotateX(5deg);box-shadow:0 16px 32px rgba(0,0,0,.28)}
-    .card p{color:var(--clr-muted);font-size:.95rem;margin-top:.55rem}
+    .card{background:var(--clr-surface);border-radius:var(--radius);padding:2.25rem;transform-style:preserve-3d;transition:var(--transition)}
+    .card:hover{transform:translateY(-10px) rotateX(6deg) rotateY(-2deg);box-shadow:0 18px 32px rgba(0,0,0,.35)}
+    .card p{color:var(--clr-muted);font-size:.94rem;margin-top:.6rem}
 
     /* ===== Horizontal Timeline ===== */
-    .timeline-container{overflow-x:auto;padding-bottom:1rem}
-    .timeline{display:flex;gap:3rem;min-width:600px;padding:1rem 0;position:relative}
-    .timeline::before{content:"";position:absolute;top:50%;left:0;width:100%;height:2px;background:var(--clr-primary);transform:translateY(-50%)}
-    .checkpoint{position:relative;min-width:150px;text-align:center;background:var(--clr-surface);padding:1.2rem;border-radius:var(--radius)}
-    .checkpoint span{display:block;font-weight:600;color:var(--clr-primary);margin-bottom:.3rem}
-    .checkpoint::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--clr-bg);border:3px solid var(--clr-primary)}
+    .timeline-scroll{overflow-x:auto;padding-bottom:1rem}
+    .timeline{display:flex;gap:2.5rem;min-width:700px;position:relative;padding:2rem 0}
+    .timeline::before{content:"";position:absolute;left:0;top:50%;width:100%;height:3px;background:var(--clr-primary);transform:translateY(-50%)}
+    .checkpoint{flex:0 0 220px;background:var(--clr-surface);border-radius:var(--radius);padding:1.35rem 1rem;text-align:center;position:relative;transition:var(--transition);cursor:default}
+    .checkpoint span{display:block;font-weight:600;color:var(--clr-primary);margin-bottom:.35rem}
+    .checkpoint::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:3px solid var(--clr-primary);background:var(--clr-bg);transition:background .3s}
+    .checkpoint:hover{transform:translateY(-8px)}
+    .checkpoint:hover::after{background:var(--clr-primary)}
 
     /* ===== Contact ===== */
-    .contact-box{text-align:center;background:var(--clr-surface);padding:3rem 2rem;border-radius:var(--radius)}
+    .contact-box{text-align:center;background:var(--clr-surface);padding:3.2rem 2rem;border-radius:var(--radius)}
     .contact-box p{color:var(--clr-muted)}
 
     footer{text-align:center;padding:2rem 0;font-size:.85rem;color:var(--clr-muted)}
   </style>
 </head>
 <body>
-  <!-- ===== Navigation ===== -->
   <nav>
     <div class="nav-inner container">
       <div class="logo"><img src="logo.png" alt="Turing Fig logo"/>Turing Fig</div>
@@ -78,7 +82,7 @@
   </nav>
   <div class="spacer"></div>
 
-  <!-- ===== Hero ===== -->
+  <!-- Hero -->
   <header class="hero">
     <div class="container">
       <h1>Programmable finance, built for the real world.</h1>
@@ -87,7 +91,7 @@
     </div>
   </header>
 
-  <!-- ===== About ===== -->
+  <!-- About -->
   <section id="about">
     <div class="container">
       <h2>About</h2>
@@ -95,23 +99,23 @@
     </div>
   </section>
 
-  <!-- ===== Build ===== -->
+  <!-- Build -->
   <section id="build">
     <div class="container">
       <h2>What We’re Building</h2>
       <div class="features">
         <div class="card"><h3>USDT ↔ Fiat Rails</h3><p>Settle cross-border transactions in seconds with lower fees and zero middlemen.</p></div>
-        <div class="card"><h3>BTC Credit Lines</h3><p>Over‑collateralised liquidity for institutions that need capital to move at market speed.</p></div>
-        <div class="card"><h3>Treasury&nbsp;OS</h3><p>One dashboard + APIs to track, move and reconcile digital funds across currencies.</p></div>
+        <div class="card"><h3>BTC Credit Lines</h3><p>Over‑collateralised liquidity for institutions that need capital at blockchain speed.</p></div>
+        <div class="card"><h3>Treasury&nbsp;OS</h3><p>One dashboard + APIs to track, move &amp; reconcile digital funds across currencies.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Roadmap ===== -->
+  <!-- Roadmap -->
   <section id="roadmap">
     <div class="container">
-      <h2>Platform Status · April&nbsp;2025</h2>
-      <div class="timeline-container">
+      <h2>Platform Status · April 2025</h2>
+      <div class="timeline-scroll">
         <div class="timeline">
           <div class="checkpoint"><span>Q2 2025</span>Core infrastructure live · Internal use</div>
           <div class="checkpoint"><span>Q3 2025</span>Closed partner testing · Select institutions</div>
@@ -122,12 +126,12 @@
     </div>
   </section>
 
-  <!-- ===== Contact ===== -->
+  <!-- Contact -->
   <section id="contact" class="contact-box">
     <div class="container">
       <h2>Contact Us</h2>
       <p>Ready to move money without borders? Let’s talk.</p>
-      <p><a href="mailto:info@turingfig.com" class="btn" style="margin-top:1.2rem">Email Us</a></p>
+      <a href="mailto:info@turingfig.com" class="btn">Email Us</a>
       <p style="margin-top:1.8rem">Turing Pay S.A. de C.V.<br/>Paseo General Escalón 3675, 21st Floor<br/>Millennium Plaza, San Salvador, El Salvador</p>
     </div>
   </section>
