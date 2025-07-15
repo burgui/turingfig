@@ -1,202 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Turing Fig – Programmable Finance</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ----------  Design Tokens  ---------- */
     :root {
-      --clr-navy: #0d1b2a;
-      --clr-midnight: #1b263b;
-      --clr-slate: #46597a;
-      --clr-cyan: #00a4ff;
-      --clr-light: #f6f7f9;
-      --radius: 12px;
-      --transition: 0.25s ease;
+      --color-bg: #0f172a;
+      --color-primary: #00a4ff;
+      --color-text: #f1f5f9;
+      --color-muted: #94a3b8;
+      --radius: 1rem;
     }
 
-    /* ----------  Global Styles  ---------- */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: "Inter", system-ui, sans-serif;
-      color: var(--clr-midnight);
-      background: var(--clr-light);
-      line-height: 1.55;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
     }
 
-    h1, h2, h3 {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      color: var(--clr-navy);
-    }
-
-    h1 { font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1.1; }
-    h2 { font-size: 1.9rem; margin-bottom: .4em; }
-    h3 { font-size: 1.2rem; }
-
-    section {
-      padding: 4.5rem 1.5rem;
-      max-width: 1150px;
-      margin-inline: auto;
-    }
-
-    /* ----------  Hero  ---------- */
-    .hero {
-      background: linear-gradient(135deg, var(--clr-navy) 0%, var(--clr-midnight) 100%);
-      color: #fff;
+    header {
       text-align: center;
-      padding: 7rem 1.5rem 6rem;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      margin-top: 1rem;
-      color: #d1e2ff;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
     }
 
-    /* ----------  Utility  ---------- */
-    .btn {
-      display: inline-block;
-      background: var(--clr-cyan);
-      color: #fff;
-      padding: 0.85rem 1.75rem;
-      border-radius: var(--radius);
-      font-weight: 500;
-      text-decoration: none;
-      transition: var(--transition);
-      margin-top: 2rem;
+    header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
-    .btn:hover { transform: translateY(-3px); }
 
-    /* ----------  Two-Column Layouts  ---------- */
-    .grid-2 {
-      display: grid;
-      gap: 2.5rem;
+    header p {
+      color: var(--color-muted);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    @media (min-width: 860px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
 
-    /* ----------  Table  ---------- */
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--color-primary);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 1rem;
+      color: var(--color-muted);
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1.5rem;
-      font-size: 0.95rem;
+      margin-top: 2rem;
     }
-    table thead {
-      background: var(--clr-slate);
-      color: #fff;
-    }
-    th, td {
-      padding: 0.75rem 0.9rem;
-      border: 1px solid #e1e6ef;
-      text-align: left;
-    }
-    tbody tr:nth-child(even) { background: #f0f2f7; }
 
-    /* ----------  Contact  ---------- */
-    .contact-box {
-      background: var(--clr-navy);
-      color: #fff;
+    th,
+    td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #334155;
+    }
+
+    th {
+      background-color: #1e293b;
+      color: var(--color-text);
+    }
+
+    .contact {
+      background-color: #1e293b;
       border-radius: var(--radius);
-      padding: 2rem;
+      padding: 3rem;
       text-align: center;
     }
-    .contact-box a {
-      color: var(--clr-cyan);
+
+    .contact a {
+      color: var(--color-primary);
       text-decoration: none;
+      font-weight: 600;
     }
 
     footer {
-      background: var(--clr-midnight);
-      color: #aeb6c9;
-      padding: 2rem 1.5rem;
-      font-size: 0.85rem;
       text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--color-muted);
     }
   </style>
 </head>
 
 <body>
-
-  <!-- ================= HERO ================= -->
-  <header class="hero">
-    <h1>Programmable finance,<br />built for the real world.</h1>
-    <p>Move capital at internet speed. Turing Pay bridges USDT liquidity with regulated fiat rails—simple, fast, compliant.</p>
-    <a href="#contact" class="btn">Get in touch</a>
+  <header>
+    <h1>Programmable finance, built for the real world.</h1>
+    <p>We bridge USDT liquidity with regulated fiat rails—fast, simple, and compliant.</p>
   </header>
 
-  <!-- ================= ABOUT ================= -->
-  <section id="about">
+  <section class="section">
     <h2>About</h2>
-    <p>Turing Fig is not just another fintech. <strong>We’re building the financial backbone for a tokenized, borderless economy.</strong> Powered by Tether and operated through <em>Turing Pay S.A. de C.V.</em>—a fully licensed Digital Asset Service Provider in El Salvador—we turn blockchain liquidity into real-world money movement: instant, transparent, and global.</p>
+    <p>Turing Fig is not just another fintech. We’re building the financial backbone for a tokenized, borderless economy. Through our licensed entity, <strong>Turing Pay S.A. de C.V.</strong> in El Salvador, we’re turning blockchain liquidity into real-world money movement.</p>
   </section>
 
-  <!-- ================= WHY / FEATURES ================= -->
-  <section id="why" class="grid-2">
-    <div>
-      <h2>Why&nbsp;Turing&nbsp;Pay?</h2>
-      <ul>
-        <li><strong>Licensed &amp; compliant</strong> – DASP-approved, enterprise-grade AML/KYC.</li>
-        <li><strong>USDT ↔ fiat in seconds</strong> – settle cross-border invoices 24/7.</li>
-        <li><strong>Developer-first APIs</strong> – integrate payments with a few lines of code.</li>
-        <li><strong>Lower fees</strong> – engineered for high-volume merchants and emerging-market flows.</li>
-      </ul>
-    </div>
-
-    <div>
-      <h2>What We're Building</h2>
-      <ul>
-        <li><strong>Instant Settlement Rails</strong> – USDT cash-in/out across 70+ payout markets.</li>
-        <li><strong>BTC Credit Lines</strong> – over-collateralised liquidity for institutions.</li>
-        <li><strong>Treasury OS</strong> – one dashboard &amp; API suite to track, move, and reconcile funds.</li>
-      </ul>
-    </div>
+  <section class="section">
+    <h2>What We're Building</h2>
+    <ul>
+      <li><strong>USDT ↔ Fiat Rails:</strong> Settle global transactions in seconds.</li>
+      <li><strong>BTC Credit Lines:</strong> Overcollateralized institutional liquidity.</li>
+      <li><strong>Treasury OS:</strong> One dashboard for global digital fund flows.</li>
+    </ul>
   </section>
 
-  <!-- ================= STATUS / ROADMAP ================= -->
-  <section id="status">
-    <h2>Platform Status · April&nbsp;2025</h2>
-    <p>Turing Pay is licensed and in active build. We publish milestones as they are hit.</p>
-
+  <section class="section">
+    <h2>Platform Status · April 2025</h2>
     <table>
       <thead>
-        <tr><th>Phase</th><th>Timeline</th><th>Status</th></tr>
+        <tr>
+          <th>Phase</th>
+          <th>Timeline</th>
+          <th>Status</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td>Core infrastructure live</td><td>Q2&nbsp;2025</td><td>✅ Internal use</td></tr>
-        <tr><td>Closed partner testing</td><td>Q3&nbsp;2025</td><td>🔄 Onboarding select institutions</td></tr>
-        <tr><td>Institutional pilot</td><td>Q4&nbsp;2025</td><td>🔜 Real USDT ↔ fiat flows</td></tr>
-        <tr><td>Public onboarding</td><td>Q2&nbsp;2026</td><td>🚧 Scheduled</td></tr>
+        <tr>
+          <td>Core infrastructure live</td>
+          <td>Q2 2025</td>
+          <td>✅ Internal use</td>
+        </tr>
+        <tr>
+          <td>Closed partner testing</td>
+          <td>Q3 2025</td>
+          <td>🔄 In progress</td>
+        </tr>
+        <tr>
+          <td>Institutional pilot</td>
+          <td>Q4 2025</td>
+          <td>🔜 Scheduled</td>
+        </tr>
+        <tr>
+          <td>Public onboarding</td>
+          <td>Q2 2026</td>
+          <td>🚧 Planned</td>
+        </tr>
       </tbody>
     </table>
   </section>
 
-  <!-- ================= CONTACT ================= -->
-  <section id="contact">
-    <div class="contact-box">
-      <h2>Contact Us</h2>
-      <p>Ready to move money without borders? Let’s talk.</p>
-      <p><a href="mailto:info@turingfig.com">info@turingfig.com</a></p>
-      <p>Turing Pay S.A. de C.V.<br />Paseo General Escalón 3675, 21&nbsp;F<br />Millennium Plaza, San Salvador, El Salvador</p>
-    </div>
+  <section class="section contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Let’s build the future of finance—together.</p>
+    <p><a href="mailto:info@turingfig.com">info@turingfig.com</a></p>
+    <p>Turing Pay S.A. de C.V.<br>Paseo General Escalón 3675, 21st Floor<br>Millennium Plaza, San Salvador, El Salvador</p>
   </section>
 
   <footer>
-    © 2025 Turing Fig. All rights reserved. This site does not constitute an offer or solicitation. Platform status is updated as milestones are achieved.
+    © 2025 Turing Fig. All rights reserved.
   </footer>
-
 </body>
+
 </html>
