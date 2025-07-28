@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).end(); // Method Not Allowed
+    return res.status(405).end();
   }
 
   const { name, email, message, subject } = req.body;
@@ -16,12 +16,14 @@ export default async function handler(req, res) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'TFG <noreply@turingfig.com>',
+      from: 'TFG <onboarding@resend.dev>', // TEMPORAL para probar
       to: 'fernando.rey@turingfig.com',
       subject: subject || 'TFG Contact Form',
-      html: `<p><strong>Name:</strong> ${name}</p>
-             <p><strong>Email:</strong> ${email}</p>
-             <p><strong>Message:</strong><br>${message}</p>`
+      html: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong><br>${message}</p>
+      `
     }),
   });
 
