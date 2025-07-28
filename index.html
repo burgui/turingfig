@@ -52,46 +52,42 @@
 
     <!-- Contact Hub -->
     <div class="contact-grid">
-
-     <!-- General -->
- <div class="card">
+<!-- General enquiries -->
+<div class="card">
   <h2>General enquiries</h2>
-  <form action="https://formsubmit.co/fernando.rey@turingfig.com" method="POST">
-    <input type="hidden" name="_subject" value="TFG · General enquiry">
-    <input type="hidden" name="_next" value="https://turingfig.com/thanks.html">
+  <form action="/api/contact" method="POST">
+    <input type="hidden" name="subject" value="TFG · General enquiry">
     <input type="text" name="name" placeholder="Your name" required>
     <input type="email" name="email" placeholder="Your email" required>
     <textarea name="message" placeholder="How can we help?" required></textarea>
     <button type="submit">Send message</button>
   </form>
- </div>
+</div>
 
- <!-- Payment infrastructure -->
- <div class="card">
+<!-- Payment infrastructure -->
+<div class="card">
   <h2>Payment-infrastructure</h2>
-  <form action="https://formsubmit.co/fernando.rey@turingfig.com" method="POST">
-    <input type="hidden" name="_subject" value="TFG · Payment infrastructure">
-    <input type="hidden" name="_next" value="https://turingfig.com/thanks.html">
+  <form action="/api/contact" method="POST">
+    <input type="hidden" name="subject" value="TFG · Payment infrastructure">
     <input type="text" name="name" placeholder="Your name" required>
     <input type="email" name="email" placeholder="Your email" required>
     <textarea name="message" placeholder="Project outline / volume" required></textarea>
     <button type="submit">Send request</button>
   </form>
- </div>
+</div>
 
- <!-- BTC lending -->
- <div class="card">
+<!-- BTC lending -->
+<div class="card">
   <h2>BTC lending</h2>
-  <form action="https://formsubmit.co/fernando.rey@turingfig.com" method="POST">
-    <input type="hidden" name="_subject" value="TFG · BTC over-collateralised lending">
-    <input type="hidden" name="_next" value="https://turingfig.com/thanks.html">
+  <form action="/api/contact" method="POST">
+    <input type="hidden" name="subject" value="TFG · BTC over-collateralised lending">
     <input type="text" name="name" placeholder="Your name" required>
     <input type="email" name="email" placeholder="Your email" required>
     <textarea name="message" placeholder="Loan size / collateral" required></textarea>
     <button type="submit">Start conversation</button>
   </form>
   </div>
-</div>
+    </div>
  </body>
 <footer>
     Turing Payments El Salvador S.A. de C.V. · Paseo General Escalón 3675 (21 F), Millennium Plaza, San Salvador, El Salvador<br>
