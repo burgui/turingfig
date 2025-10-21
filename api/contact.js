@@ -1,7 +1,14 @@
 export default async function handler(req, res) {
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
+
+  console.log("🔑 ENV KEY:", process.env.RESEND_API_KEY);
+
 
   const { name, email, message, subject } = req.body;
 
@@ -27,9 +34,11 @@ export default async function handler(req, res) {
     }),
   });
 
-  if (!response.ok) {
-    return res.status(500).json({ error: 'Failed to send email' });
-  }
+if (!response.ok) {
+  const errorText = await response.text();
+  console.log("Resend error:", response.status, errorText);
+  return res.status(500).json({ error: 'Failed to send email', details: errorText });
+}
 
   res.writeHead(302, { Location: '/thanks.html' });
   res.end();

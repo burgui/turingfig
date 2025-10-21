@@ -1,96 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Turing Financial Group</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --bg:#ffffff;
-      --surface:#f5f7fa;
-      --primary:#000000;
-      --text:#000000;
-      --muted:#5b667c;
-      --radius:.75rem;
+      --bg:#ffffff; --ink:#0b0f19; --muted:#616C7C;
+      --surface:#F5F7FA; --line:#E3E8EF; --accent:#000;
+      --radius:16px; --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
-    h1,h2{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--primary)}
-    h1{font-size:clamp(2.2rem,5.8vw,3.6rem);margin-top:1.4rem}
-    h2{font-size:1.25rem;margin-bottom:.6rem}
-    .wrapper{width:90%;max-width:1180px;margin-inline:auto;padding:3.5rem 0;display:flex;flex-direction:column;align-items:center;gap:3.5rem}
-    .logo{
-      width:600px;      /* antes 160px */
-      max-width:80vw;   /* nunca ocupará más del 40 % del viewport */
-      height:auto;}
-    .contact-grid{display:grid;gap:2rem;width:100%}
-    @media(min-width:768px){.contact-grid{grid-template-columns:repeat(3,1fr)}}
-    .card{background:var(--surface);padding:2rem;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;gap:1.25rem;min-height:260px}
-    .card form{display:flex;flex-direction:column;gap:.8rem;width:100%}
-    .card input[type="text"],.card input[type="email"],.card textarea{
-      width:100%;padding:.75rem 1rem;border:1px solid #d0d6e1;border-radius:.5rem;font-size:.95rem;font-family:inherit}
-    .card textarea{resize:vertical;min-height:90px}
-    .card button{
-      background:var(--primary);color:#fff;padding:.75rem;border:none;border-radius:.5rem;font-weight:600;cursor:pointer;transition:opacity .25s}
-    .card button:hover{opacity:.85}
-    footer{padding:2rem 1rem;text-align:center;font-size:.85rem;color:var(--muted)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+    .wrap{max-width:1040px;margin:64px auto;padding:0 24px}
+
+    /* Header */
+    header{display:flex;align-items:center;gap:28px;margin-bottom:28px}
+    .logo{width:420px;max-width:70vw;height:auto} /* bigger logo */
+    .brand-block{display:flex;flex-direction:column;gap:6px}
+    .brand-title{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .brand-tag{font-size:14px;color:var(--muted); margin-top: 2px;  }
+    .divider{height:1px;background:var(--line);margin:24px 0}
+
+    /* Intro */
+    
+    .intro{display:grid;gap:14px;margin-bottom:8px}
+    .intro h1{font-size:36px;font-weight:600;letter-spacing:-.02em}
+    .intro h1 {margin-bottom: 12px;}
+    .lede{color:var(--muted);max-width:80ch}
+    .brief{display:grid;gap:6px;margin-top:6px;color:var(--ink)}
+    .brief li{margin-left:1rem}
+    
+
+    /* Grid */
+    .grid{display:grid;gap:24px;grid-template-columns:1fr}
+    @media(min-width:960px){.grid{grid-template-columns:2fr 1fr}}
+
+    /* Cards */
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+    .card {  background: #f7f9fb;     /* más luminoso */ border: 1px solid #d5dce4;}
+    .card h2{font-size:18px;margin-bottom:14px}
+
+    /* Form */
+    form{display:grid;gap:16px}
+    .radios{display:flex;gap:10px;flex-wrap:wrap}
+    .radio{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:#fff;cursor:pointer}
+    input[type="radio"]{accent-color:var(--accent)}
+    label.field{font-size:14px;color:var(--muted)}
+    input[type="text"],input[type="email"],textarea{
+      width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff
+    }
+    textarea{min-height:120px;resize:vertical}
+    .actions{display:flex;align-items:center;gap:12px}
+    button{
+      background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px 16px;font-weight:600;cursor:pointer
+    }
+    button:hover{opacity:.94}
+    .note{font-size:12px;color:var(--muted)}
+
+    /* Sidebar */
+    .sidebar .kv{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:8px 0}
+    .sidebar .kv span:first-child{color:var(--muted)}
+    .small{font-size:13px;color:var(--muted)}
+    address{font-style:normal;white-space:pre-line}
+    .links{margin-top:12px;border-top:1px solid var(--line);padding-top:12px;display:grid;gap:8px}
+    .links a{
+      display:inline-flex;align-items:center;gap:8px;
+      text-decoration:none;color:#0b0f19;border:1px solid var(--line);
+      background:#fff;padding:10px 12px;border-radius:10px;
+    }
+    .links a:hover{background:#fdfdfd}
+    .links a svg{width:16px;height:16px}
+
+    footer{margin:36px 0 8px;color:var(--muted);font-size:13px;text-align:center}
+    footer {border-top: 1px solid var(--line);  padding-top: 18px;  margin-top: 48px;
+    /* Capabilities block (replaces bullets) */
+    .capabilities{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      margin-top:12px;
+      background:#f7f9fb;              /* sutil, corporativo */
+      border:1px solid #d5dce4;
+      border-radius:14px;
+      padding:18px 20px;
+    }
+    .cap-item h3{
+      font-size:15px;
+      font-weight:600;
+      letter-spacing:.01em;
+      margin-bottom:4px;
+    }
+    .cap-item p{
+      color:var(--muted);
+      margin:0;
+    }
+    .cap-sep{
+      height:1px;
+      background:#e3e8ef;
+      border-radius:2px;
+    }
+
+    /* En desktop, dos columnas con separador vertical */
+    @media (min-width:900px){
+      .capabilities{
+        grid-template-columns:1fr 1px 1fr;  /* item | separator | item */
+        align-items:start;
+        padding:20px 24px;
+      }
+      .cap-sep{width:1px;height:auto}
+    }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <!-- Header -->
+    <header>
+      <img src="tfg-logo.svg" alt="Turing Financial Group" class="logo" />
+      <div class="brand-block">
+        <div class="brand-title">Corporate</div>
+        <div class="brand-tag">Global by design. Compliant by principle.</div>
+      </div>
+    </header>
 
-  <div class="wrapper">
+    <div class="divider"></div>
 
-    <!-- Brand + Claim -->
-    <!-- Swap in tfg-logo.svg ; keep a .png fallback in the same folder if needed -->
-    <img src="tfg-logo.svg" alt="Turing Financial Group logo" class="logo">
-    <h1>Lorem ipsum dolor sit amet consectetur adipiscing elit convallis tellus.</h1>
+    <!-- Intro -->
+    <section class="intro">
+      <h1>Institutional-grade finance for the digital age.</h1>
 
-    <!-- Contact Hub -->
-    <div class="contact-grid">
-<!-- General enquiries -->
-<div class="card">
-  <h2>General enquiries</h2>
-  <form action="/api/contact" method="POST">
-    <input type="hidden" name="subject" value="TFG · General enquiry">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="How can we help?" required></textarea>
-    <button type="submit">Send message</button>
-  </form>
-</div>
-
-<!-- Payment infrastructure -->
-<div class="card">
-  <h2>Payment-infrastructure</h2>
-  <form action="/api/contact" method="POST">
-    <input type="hidden" name="subject" value="TFG · Payment infrastructure">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Project outline / volume" required></textarea>
-    <button type="submit">Send request</button>
-  </form>
-</div>
-
-<!-- BTC lending -->
-<div class="card">
-  <h2>BTC lending</h2>
-  <form action="/api/contact" method="POST">
-    <input type="hidden" name="subject" value="TFG · BTC over-collateralised lending">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Loan size / collateral" required></textarea>
-    <button type="submit">Start conversation</button>
-  </form>
-  </div>
+      <p class="lede">
+      Turing Financial Group builds the secure and compliant bridge between cryptocurrencies and traditional finance. Whether for individuals or institutions, we enable transparent governance and trusted cross-border transactions.
+      </p>
+      <!-- NEW: compact capabilities block replacing the bullets -->
+      <div class="capabilities" aria-label="Capabilities">
+      <div class="cap-item">
+        <h3>Lending</h3>
+        <p>Bitcoin collateralized structures tailored to professional and institutional borrower.</p>
+      </div>
+      <div class="cap-sep" aria-hidden="true"></div>
+      <div class="cap-item">
+        <h3>Payments</h3>
+        <p>Multi-currency infrastructure for transparent, compliant, and efficient cross-border settlements.</p>
+      </div>
     </div>
- </body>
-<footer>
-    Turing Payments El Salvador S.A. de C.V. · Paseo General Escalón 3675 (21 F), Millennium Plaza, San Salvador, El Salvador<br>
-    © 2025 Turing Financial Group. All rights reserved.
- </footer>
- </html>
+
+    <div class="grid">
+      <!-- Contact Form -->
+      <section class="card" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <form action="/api/contact" method="POST" id="tfg-contact">
+          <input type="hidden" name="subject" id="subject" value="TFG · General" />
+
+          <div>
+            <label class="field">Reason for contact</label>
+            <div class="radios" role="radiogroup" aria-label="Contact topic">
+              <label class="radio"><input type="radio" name="topic" value="General" checked />General</label>
+              <label class="radio"><input type="radio" name="topic" value="Lending" />Lending</label>
+              <label class="radio"><input type="radio" name="topic" value="Payments" />Payments</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="name" class="field">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required />
+          </div>
+
+          <div>
+            <label for="email" class="field">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+          </div>
+
+          <div>
+            <label for="message" class="field">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message…" required></textarea>
+          </div>
+
+          <div class="actions">
+            <button type="submit">Send message</button>
+            <span class="note">We will reply shortly.</span>
+          </div>
+        </form>
+      </section>
+
+      <!-- Corporate Details -->
+      <aside class="card sidebar" aria-labelledby="corp-title">
+        <h2 id="corp-title">Corporate details</h2>
+
+        <div class="kv"><span>Legal name</span><span><strong>Turing Payments El Salvador S.A. de C.V.</strong></span></div>
+        <div class="kv"><span>Website</span><span><strong><a href="https://turingfig.com" target="_blank" rel="noopener">turingfig.com</a></strong></span></div>
+        <div class="kv"><span>Email</span><span><strong><a href="mailto:info@turingfig.com">info@turingfig.com</a></strong></span></div>
+
+        <div class="small" style="margin:14px 0 6px;">Registered office</div>
+        <address>
+Paseo General Escalón 3675 — Floor 21 (Unit 11)
+Millennium Plaza
+San Salvador, El Salvador
+        </address>
+
+        <!-- NEW: policy/terms links -->
+        <div class="links" aria-label="Policies">
+          <a href="/privacy.html">
+            <!-- icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" stroke-width="1.5"/></svg>
+            <span>Privacy Policy</span>
+          </a>
+          <a href="/legal.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 21h16M8 21V5a2 2 0 0 1 2-2h6l4 4v14M8 7h8M8 11h8M8 15h5" stroke-width="1.5"/></svg>
+            <span>Legal Terms</span>
+          </a>
+        </div>
+
+        <p class="small" style="margin-top:10px;">
+          Business presence: global. All communications are handled through the channels above.
+        </p>
+      </aside>
+    </div>
+
+    <footer>
+      © 2025 Turing Financial Group · All rights reserved
+    </footer>
+  </div>
+
+  <script>
+    // Keep subject aligned with radio selection (backend-friendly)
+    (function () {
+      const form = document.getElementById('tfg-contact');
+      const subject = document.getElementById('subject');
+      form.addEventListener('change', (e) => {
+        if (e.target && e.target.name === 'topic') {
+          subject.value = `TFG · ${e.target.value}`;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
