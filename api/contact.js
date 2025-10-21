@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
     return res.status(405).end();
   }
 
-  console.log("🔑 ENV KEY:", process.env.RESEND_API_KEY);
+  //console.log("🔑 ENV KEY:", process.env.RESEND_API_KEY);
 
 
   const { name, email, message, subject } = req.body;
