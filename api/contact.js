@@ -1,13 +1,13 @@
 export default async function handler(req, res) {
-//if (process.env.NODE_ENV !== 'production') {
-//  require('dotenv').config();
-//}
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
 
-  //console.log("🔑 ENV KEY:", process.env.RESEND_API_KEY);
+  console.log("🔑 ENV KEY:", process.env.RESEND_API_KEY);
 
 
   const { name, email, message, subject } = req.body;
