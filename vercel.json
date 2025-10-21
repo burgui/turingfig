@@ -1,5 +1,5 @@
 {
-  "env": {
-    "RESEND_API_KEY": "@resend_api_key"
-  }
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ]
 }
